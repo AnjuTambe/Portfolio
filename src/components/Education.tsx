@@ -54,84 +54,59 @@ const educationData: EducationItem[] = [
     },
 ];
 
-// Education section component for portfolio
 export default function Education() {
-    const [activeIdx, setActiveIdx] = useState<number | null>(null);
+    const [selectedEdu, setSelectedEdu] = useState<EducationItem | null>(null);
 
     return (
-        <section className="py-16 px-4 bg-gray-900 text-white flex flex-col items-center">
-            <h2 className="text-3xl font-bold mb-8 text-center">Education</h2>
-            <div className="w-full max-w-2xl">
-                {educationData.map((edu, idx) => (
-                    <div
-                        key={edu.school + edu.degree}
-                        className="mb-8 p-6 rounded-xl bg-gray-800 shadow-lg cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-2xl"
-                        onClick={() => setActiveIdx(idx)}
-                    >
-                        <h3 className="text-xl font-semibold text-blue-400 mb-2">
-                            {edu.school}
-                        </h3>
-                        <div className="text-gray-300 mb-1">
-                            {edu.degree}{" "}
-                            <span className="ml-2 text-sm text-gray-400">{edu.date}</span>
+        <section id="education" className="pl-4 md:pl-12 py-4">
+            <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white hover:text-gray-300 transition-colors cursor-pointer">
+                Academic Background
+            </h2>
+            <div className="group relative">
+                <div className="flex gap-2 overflow-x-scroll no-scrollbar pb-8 scroll-smooth">
+                    {educationData.map((edu, idx) => (
+                        <div
+                            key={idx}
+                            className="flex-none w-[280px] md:w-[320px] aspect-[16/9] bg-[#181818] rounded-md relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-out hover:z-50 group-hover:opacity-100 border border-gray-800 hover:border-white"
+                            onClick={() => setSelectedEdu(edu)}
+                        >
+                            <div className="w-full h-full p-6 flex flex-col justify-between items-start bg-gradient-to-tr from-black to-[#1a1a1a]">
+                                <div>
+                                    <h3 className="text-white font-bold text-lg leading-tight mb-2">{edu.school.split(' ').slice(0, 2).join(' ')}...</h3>
+                                    <p className="text-gray-400 text-xs md:text-sm">{edu.degree.split(',')[0]}</p>
+                                </div>
+                                <p className="text-[#e50914] text-xs font-bold uppercase tracking-wide">Education</p>
+                            </div>
                         </div>
-                        <div className="text-gray-400 mb-2">GPA: {edu.gpa}</div>
-                        <div className="mb-2">
-                            <span className="font-semibold text-gray-200">Coursework:</span>
-                            <div className="flex flex-wrap gap-2 mt-1">
-                                {edu.coursework.map((course) => (
-                                    <span
-                                        key={course}
-                                        className="px-2 py-1 rounded bg-gray-700 text-xs"
-                                    >
+                    ))}
+                </div>
+            </div>
+
+            {/* Modal Detail View */}
+            {selectedEdu && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={() => setSelectedEdu(null)}>
+                    <div className="bg-[#141414] w-full max-w-2xl rounded-lg overflow-hidden shadow-2xl animate-fadeInUp border border-gray-800" onClick={e => e.stopPropagation()}>
+                        <div className="p-8 pb-4 border-b border-gray-800 flex justify-between items-start">
+                            <div>
+                                <h2 className="text-3xl font-bold text-white mb-2">{selectedEdu.school}</h2>
+                                <p className="text-lg text-gray-300 font-medium">{selectedEdu.degree}</p>
+                                <div className="flex gap-4 mt-2 text-sm text-gray-500">
+                                    <span>{selectedEdu.date}</span>
+                                    <span>GPA: {selectedEdu.gpa}</span>
+                                </div>
+                            </div>
+                            <button className="text-gray-400 hover:text-white" onClick={() => setSelectedEdu(null)}>✕</button>
+                        </div>
+
+                        <div className="p-8">
+                            <h4 className="text-white font-semibold mb-3">Coursework</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {selectedEdu.coursework.map((course) => (
+                                    <span key={course} className="px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full border border-gray-700">
                                         {course}
                                     </span>
                                 ))}
                             </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            {/* Popup Modal */}
-            {activeIdx !== null && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
-                    onClick={() => setActiveIdx(null)}
-                >
-                    <div
-                        className="relative p-8 rounded-2xl bg-gray-900 border-4 border-blue-400 shadow-2xl scale-105 animate-popUp"
-                        style={{ minWidth: 340, maxWidth: 520 }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <button
-                            className="absolute top-3 right-3 text-gray-400 hover:text-white text-xl font-bold"
-                            onClick={() => setActiveIdx(null)}
-                            aria-label="Close"
-                        >
-                            ×
-                        </button>
-                        <h3 className="text-2xl font-bold text-blue-400 mb-2">
-                            {educationData[activeIdx].school}
-                        </h3>
-                        <div className="text-gray-300 mb-2">
-                            {educationData[activeIdx].degree}{" "}
-                            <span className="ml-2 text-sm text-gray-400">
-                                {educationData[activeIdx].date}
-                            </span>
-                        </div>
-                        <div className="text-gray-400 mb-2">
-                            GPA: {educationData[activeIdx].gpa}
-                        </div>
-                        <span className="font-semibold text-gray-200">Coursework:</span>
-                        <div className="flex flex-wrap gap-2 mt-2 mb-2">
-                            {educationData[activeIdx].coursework.map((course) => (
-                                <span
-                                    key={course}
-                                    className="px-2 py-1 rounded bg-gray-700 text-xs"
-                                >
-                                    {course}
-                                </span>
-                            ))}
                         </div>
                     </div>
                 </div>

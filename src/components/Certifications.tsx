@@ -2,77 +2,56 @@
 import React, { useState } from "react";
 
 interface CertificationItem {
-    icon: string;
     title: string;
-    color: string;
     description: string;
     details?: string | null;
 }
 
-// Certifications data
 const certifications: CertificationItem[] = [
     {
-        icon: "✅",
         title: "AWS Cloud Technical Essentials",
-        color: "blue-400",
         description: "Expertise in AWS (EC2, S3, RDS, IAM) with optimized cloud solutions.",
         details: null,
     },
 ];
 
-// Certifications section component for portfolio
 export default function Certifications() {
-    const [activeIdx, setActiveIdx] = useState<number | null>(null);
-
-    const getBorderColor = (color: string) => {
-        if (color === 'blue-400') return 'border-blue-400';
-        if (color === 'red-400') return 'border-red-400';
-        if (color === 'green-400') return 'border-green-400';
-        return 'border-gray-500';
-    }
-
-    const getTextColor = (color: string) => {
-        if (color === 'blue-400') return 'text-blue-400';
-        if (color === 'red-400') return 'text-red-400';
-        if (color === 'green-400') return 'text-green-400';
-        return 'text-gray-500';
-    }
-
+    const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
 
     return (
-        <section className="py-16 px-4 bg-gray-900 text-white flex flex-col items-center">
-            <h2 className="text-3xl font-bold mb-8 text-center">Certifications</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl justify-center">
-                {certifications.map((cert, idx) => (
-                    <div
-                        key={cert.title}
-                        className={`flex flex-col items-center bg-gray-800 p-6 rounded-xl shadow-lg cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}
-                        onClick={() => setActiveIdx(idx)}
-                    >
-                        <div className="text-4xl mb-2">{cert.icon}</div>
-                        <div className={`font-semibold mb-1 ${getTextColor(cert.color)}`}>{cert.title}</div>
-                        <div className="text-gray-300 text-sm mb-1">{cert.description}</div>
-                        {cert.details && <div className="text-gray-400 text-xs text-center whitespace-pre-line">{cert.details}</div>}
-                    </div>
-                ))}
+        <section id="certifications" className="pl-4 md:pl-12 py-4">
+            <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white hover:text-gray-300 transition-colors cursor-pointer">
+                Certifications
+            </h2>
+            <div className="group relative">
+                <div className="flex gap-2 overflow-x-scroll no-scrollbar pb-8 scroll-smooth">
+                    {certifications.map((cert, idx) => (
+                        <div
+                            key={idx}
+                            className="flex-none w-[220px] md:w-[260px] aspect-[16/9] bg-[#181818] rounded-md relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-out hover:z-50 group-hover:opacity-100 border border-gray-800 hover:border-white"
+                            onClick={() => setSelectedCert(cert)}
+                        >
+                            <div className="w-full h-full p-4 flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-black">
+                                <h3 className="text-white font-bold text-base mb-2 line-clamp-2">{cert.title}</h3>
+                                <p className="text-gray-500 text-xs uppercase tracking-wider">Verified</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-            {/* Popup Modal */}
-            {activeIdx !== null && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={() => setActiveIdx(null)}>
-                    <div
-                        className={`relative p-8 rounded-2xl bg-gray-900 border-4 ${getBorderColor(certifications[activeIdx].color)} shadow-2xl scale-105 animate-popUp flex flex-col items-center`}
-                        style={{ minWidth: 320, maxWidth: 400 }}
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <button
-                            className="absolute top-3 right-3 text-gray-400 hover:text-white text-xl font-bold"
-                            onClick={() => setActiveIdx(null)}
-                            aria-label="Close"
-                        >×</button>
-                        <div className="text-5xl mb-4">{certifications[activeIdx].icon}</div>
-                        <div className={`font-bold text-2xl mb-2 ${getTextColor(certifications[activeIdx].color)}`}>{certifications[activeIdx].title}</div>
-                        <div className="text-gray-300 text-base mb-2">{certifications[activeIdx].description}</div>
-                        {certifications[activeIdx].details && <div className="text-gray-400 text-xs text-center whitespace-pre-line">{certifications[activeIdx].details}</div>}
+
+            {/* Modal Detail View */}
+            {selectedCert && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={() => setSelectedCert(null)}>
+                    <div className="bg-[#141414] w-full max-w-lg rounded-lg overflow-hidden shadow-2xl animate-fadeInUp border border-gray-800" onClick={e => e.stopPropagation()}>
+                        <div className="p-8">
+                            <h2 className="text-2xl font-bold text-white mb-4">{selectedCert.title}</h2>
+                            <p className="text-gray-300 leading-relaxed mb-4">{selectedCert.description}</p>
+                            {selectedCert.details && <p className="text-sm text-gray-500">{selectedCert.details}</p>}
+                            <div className="mt-6 flex justify-end">
+                                <button className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-opacity-90" onClick={() => setSelectedCert(null)}>Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}
