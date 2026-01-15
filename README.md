@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anjali Tambe - Portfolio
+<div align="center">
+
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://AnjuTambe.github.io/Portfolio/)
+[![GitHub](https://img.shields.io/badge/github-repo-black.svg)](https://github.com/AnjuTambe/Portfolio)
+
+### [🔴 LIVE DEMO: https://AnjuTambe.github.io/Portfolio/](https://AnjuTambe.github.io/Portfolio/)
+
+</div>
+
+This is my personal portfolio website built with [Next.js](https://nextjs.org), TypeScript, and Tailwind CSS.
 
 ## Getting Started
 
