@@ -11,7 +11,7 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-center text-gray-200">About Me</h2>
             <div className="w-24 h-1 bg-[#E50914] rounded mb-6"></div>
             <p className="max-w-3xl text-lg text-gray-400 mb-6 text-center leading-relaxed">
-                Motivated Software Engineer with hands-on experience in full-stack development and automation. Currently pursuing a master&apos;s in computer science, with practical skills in JavaScript, HTML, CSS, Python, and TypeScript. Demonstrated ability to enhance system efficiency and deliver scalable solutions, and eager to apply expertise to innovative eCommerce projects.
+                Software engineer and MS Computer Science candidate at Seattle University (GPA 3.67, Dean&apos;s Honor Roll; graduating June 2026) who builds applied-AI products end to end — LLM multi-agent systems, AI-powered features, and the full-stack apps and APIs around them. Three internships shipping production code in Python, TypeScript, and Java, with hands-on LLM integration, RESTful APIs, AWS, Docker, and CI/CD; comfortable owning features from concept to deployment on small teams.
             </p>
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-6 text-gray-400">
                 <div className="flex items-center gap-2">

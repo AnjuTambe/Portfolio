@@ -10,33 +10,43 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
     {
-        company: "Connex AI",
-        role: "Jr. Software Developer Engineer Intern",
-        date: "Sep 2025 - Present",
+        company: "Babyscripts",
+        role: "Software Developer Intern",
+        date: "Jun 2026 - Present",
         details: [
-            "Developed backend services using Java and Spring Boot, ensuring reliability and modular design.",
-            "Built and documented RESTful APIs for web and mobile applications improving data accessibility and integration.",
-            "Contributed to microservices architecture design, enhancing modularity, maintainability, and scalability of backend systems."
+            "Contributing to Babyscripts’ large-scale PostgreSQL database migration, ensuring existing customer data integrity is preserved while improving query performance and reducing latency across the platform.",
+            "Developing and fixing backend features using TypeScript and Elasticsearch, including resolving critical filter query issues in the patient management dashboard that were impacting care team workflows.",
+            "Designing and implementing GraphQL API changes and database schema updates to support new product features, including adding new fields across customer group and department management workflows."
+        ],
+    },
+    {
+        company: "Connex AI",
+        role: "Jr. Software Development Engineer Intern",
+        date: "Sep 2025 - Jan 2026",
+        details: [
+            "Designed and built backend services in Java and Spring Boot with a focus on modularity and reliability, serving web and mobile clients across multiple product modules.",
+            "Implemented RESTful APIs within a microservices architecture, improving scalability and maintainability across three product modules.",
+            "Maintained CI/CD pipelines with GitHub Actions and Docker, writing unit tests and working with MySQL and DynamoDB to ensure data integrity across releases."
         ],
     },
     {
         company: "MindHome Inc.",
-        role: "Web Development and AI Engineer Intern",
-        date: "Jun 2025 – Sep 2025",
+        role: "Web Development & AI Engineer Intern",
+        date: "Jun 2025 - Sep 2025",
         details: [
-            "Collaborated with cross-functional team members to design and deliver AI-driven smart home features.",
-            "Built frontend features using JavaScript and CSS via Builder.io to enhance UI/UX responsiveness.",
-            "Engineered prompt-based automation to dynamically generate smart home videos, improving user engagement workflows.",
+            "Built AI-driven smart-home features with a cross-functional team using JavaScript, TypeScript, React, and Node.js.",
+            "Engineered prompt-based automation to dynamically generate smart-home videos, improving user-engagement workflows across three client accounts.",
+            "Developed REST APIs and frontend features (Builder.io), improving UI/UX responsiveness by 15% across mobile and desktop surfaces."
         ],
     },
     {
         company: "Prasaditi Medical Equipment",
         role: "Software Automation Engineer Intern",
-        date: "Jan 2022 – Mar 2022",
+        date: "Jan 2022 - Mar 2022",
         details: [
-            "Engineered software applications using Python and C to enhance system precision and functionality.",
-            "Acquired hands-on experience with embedded systems, achieving a 10% improvement in testing efficiency.",
-            "Optimized software integrations through effective API integrations, resulting in a 15% reduction in testing time.",
+            "Engineered software applications in Python and C to improve system precision and functionality.",
+            "Gained hands-on embedded-systems experience, achieving a 10% improvement in testing efficiency.",
+            "Optimized API integrations through effective integration work, reducing testing time by 15%."
         ],
     },
 ];

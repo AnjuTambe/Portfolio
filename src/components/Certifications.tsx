@@ -10,9 +10,14 @@ interface CertificationItem {
 const certifications: CertificationItem[] = [
     {
         title: "AWS Cloud Technical Essentials",
-        description: "Expertise in AWS (EC2, S3, RDS, IAM) with optimized cloud solutions.",
-        details: null,
+        description: "AWS Cloud Technical Essentials (Coursera) - Expertise in EC2, S3, RDS, IAM, and Lambda to build secure cloud infrastructure.",
+        details: "EC2, S3, RDS, IAM, Lambda; secure cloud infrastructure.",
     },
+    {
+        title: "Databases: Relational Databases and SQL",
+        description: "Stanford Online via edX - Relational database design, database modeling, query optimization, and SQL syntax.",
+        details: "Stanford Online via edX, Mar 2025.",
+    }
 ];
 
 export default function Certifications() {

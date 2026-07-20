@@ -13,8 +13,8 @@ const educationData: EducationItem[] = [
     {
         school: "Seattle University",
         degree: "Master of Science, Computer Science",
-        date: "Jan 2025 - Dec 2026",
-        gpa: "3.6/4.00",
+        date: "Jan 2025 - Jun 2026",
+        gpa: "3.67 | Dean's Honor Roll, Winter 2025",
         coursework: [
             "Software Architecture and Design",
             "Artificial Intelligence",
